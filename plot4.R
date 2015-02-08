@@ -17,22 +17,22 @@ power$Date <- as.Date(power$Date,"%d/%m/%Y")
 # Produce a series of plots in a 2x2 grid, and write it to a PNG file (size of 480x480 pixels is default)
 # (using the fixed axis labels for simplicity)
 # margins are CCW - DOWN(x), LEFT(y), UP, RIGHT
-par(mfrow = c(2,2), mar = c(4,4,1,1), oma = c(0,0,0,0))
-# Plot 1,1
-plot (power$Global_active_power, xlab = "", xaxt = "n", type = "l", ylab = "Global Active Power")
-axis (1, c(1,1441,2880), c("Thu","Fri","Sat"))
-# Plot 1,2
-plot(power$Voltage, xlab = "datetime", xaxt = "n", type = "l", ylab = "Voltage")
-axis (1, c(1,1441,2880), c("Thu","Fri","Sat"))
-# Plot 2,1
-plot (power$Sub_metering_1, type = "l", col="black", xaxt = "n", xlab = "", ylab = "Energy sub metering")
-lines (power$Sub_metering_2, col="red")
-lines (power$Sub_metering_3, col="blue")
-axis (1, c(1,1441,2880), c("Thu","Fri","Sat"))
-legend(2170,45, legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), x.intersp=0, xjust=1, cex = 0.7, col = c("black","red","blue"), lwd = 1, lty = 1, bty= "n")
-# Plot 2,2
-plot(power$Global_reactive_power, xlab = "datetime", xaxt = "n", type = "l", ylab = "GLobal_reactive_power")
-axis (1, c(1,1441,2880), c("Thu","Fri","Sat"))
+    par(mfrow = c(2,2), mar = c(4,4,1,1), oma = c(0,0,0,0))
+# Plot 1,1 (top left) - "Global Active Power"
+    plot (power$Global_active_power, xlab = "", xaxt = "n", type = "l", ylab = "Global Active Power")
+    axis (1, c(1,1441,2880), c("Thu","Fri","Sat"))
+# Plot 1,2 (top right) - "Voltage"
+    plot(power$Voltage, xlab = "datetime", xaxt = "n", type = "l", ylab = "Voltage")
+    axis (1, c(1,1441,2880), c("Thu","Fri","Sat"))
+# Plot 2,1 (bottom left) - "Energy sub metering" with line comparison
+    plot (power$Sub_metering_1, type = "l", col="black", xaxt = "n", xlab = "", ylab = "Energy sub metering")
+    lines (power$Sub_metering_2, col="red")
+    lines (power$Sub_metering_3, col="blue")
+    axis (1, c(1,1441,2880), c("Thu","Fri","Sat"))
+    legend(2170,45, legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), x.intersp=0, xjust=1, cex = 0.7, col = c("black","red","blue"), lwd = 1, lty = 1, bty= "n")
+# Plot 2,2 (bottom right) - "Global_reactive_power"
+    plot(power$Global_reactive_power, xlab = "datetime", xaxt = "n", type = "l", ylab = "GLobal_reactive_power")
+    axis (1, c(1,1441,2880), c("Thu","Fri","Sat"))
 # Write to the output file
-dev.copy(png, file="plot4.png")
-dev.off()
+    dev.copy(png, file="plot4.png")
+    dev.off()
